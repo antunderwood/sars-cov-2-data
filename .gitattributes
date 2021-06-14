@@ -1,0 +1,4 @@
+cog_global_tree.nwk filter=lfs diff=lfs merge=lfs -text
+cog_metadata.csv filter=lfs diff=lfs merge=lfs -text
+cog_metadata_with_colours.csv filter=lfs diff=lfs merge=lfs -text
+phylocanvas.Rproj filter=lfs diff=lfs merge=lfs -text
