@@ -1,24 +1,3 @@
-from ete3 import Tree
-import pandas as pd
-
-
-# make new dict with names as keys and concatenated name/lineages as values
-metadata = pd.read_csv("cog_metadata.csv")
-metadata['name_and_lineage'] = metadata['sequence_name'] + "#" + metadata['lineage']
-metadata_dict = dict(zip(metadata['sequence_name'], metadata['name_and_lineage']))
-
-# Make new tree file with revised concatenated name/lineages labels
-tree = Tree("cog_global_tree.nwk")
-for leaf in tree.iter_leaves():
-  leaf.name = metadata_dict[leaf.name]
-
-tree.write(format=1, outfile="cog_global_tree.plus_lineages.nwk")
-
-gsheet = pd.read_excel(
-    "https://docs.google.com/spreadsheets/d/1adAawqzLYewFya7SsfKmaopSix-DbGE05RkyVe1C1Gw/export?format=xlsx",
-    sheet_name="Lineage",
-    engine="openpyxl")
-    
-metadata_with_colours = metadata.merge(gsheet, left_on = 'lineage', right_on = 'key')
-  
- 
+version https://git-lfs.github.com/spec/v1
+oid sha256:e1b6c39250b5ce2c863cb01ac8bc034ce1df32ec3c253ef0fbd296b05d7b88a9
+size 853

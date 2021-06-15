@@ -1,12 +1,3 @@
-library(tidyverse)
-library(googlesheets4)
-library(magrittr)
-
-colours <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1adAawqzLYewFya7SsfKmaopSix-DbGE05RkyVe1C1Gw", sheet = "Lineage") %>% 
-  select(key,colour) %>% 
-  rename(lineage = key)
-
-metadata <- read_csv("/Volumes/GoogleDrive/My Drive/documents/Manuscripts/phylocanvas/cog_metadata.csv")
-metadata_with_colours <- metadata %>% left_join(colours, by = c("lineage")) %>% 
-  select(-lineage)
-write_csv(metadata_with_colours, "/Volumes/GoogleDrive/My Drive/documents/Manuscripts/phylocanvas/cog_metadata_with_colours.csv")
+version https://git-lfs.github.com/spec/v1
+oid sha256:a3d5c5e43732a8cdae69d4e37c93c9e53393311fab54b6d53864a9ecbfe8d63d
+size 595

@@ -2,3 +2,8 @@ cog_global_tree.nwk filter=lfs diff=lfs merge=lfs -text
 cog_metadata.csv filter=lfs diff=lfs merge=lfs -text
 cog_metadata_with_colours.csv filter=lfs diff=lfs merge=lfs -text
 phylocanvas.Rproj filter=lfs diff=lfs merge=lfs -text
+coloured_tree.html filter=lfs diff=lfs merge=lfs -text
+lineage_colours.json filter=lfs diff=lfs merge=lfs -text
+produce_coloured_metadata.R filter=lfs diff=lfs merge=lfs -text
+produce_renamed_tree_and_lineage_colours_json.py filter=lfs diff=lfs merge=lfs -text
+cog_global_tree.plus_lineages.nwk filter=lfs diff=lfs merge=lfs -text
