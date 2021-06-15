@@ -1,0 +1,41 @@
+
+<script src="https://glcdn.githack.com/cgps/phylocanvas/cdn/-/raw/fe01f8d/phylocanvas.js"></script>
+<script>
+    window.onload = function() {
+        const tree_url="https://gist.githubusercontent.com/aunderwo/1638e4dd5ef49aeae3ca59428cbcc299/raw/a7a1944dfa8de123bf04778d08d6534d2a11c520/Yersinia%2520enterocolitica%2520tree"
+        const data_url="https://gist.githubusercontent.com/aunderwo/1638e4dd5ef49aeae3ca59428cbcc299/raw/c290f058a26d8f032fbe623d5769b4da38eb2e40/colours.csv"
+
+        const urls=[tree_url, data_url]
+        document.getElementById("demo").innerHTML = "fetching data ..."
+
+
+        Promise.all(urls.map(url=>fetch(url))).then(responses =>
+            Promise.all(responses.map(res => res.text()))
+        ).then(([newick, metadata]) => {
+        document.getElementById("demo").innerHTML = "";
+            const tree = new phylocanvas.PhylocanvasGL(
+                document.querySelector("#demo"),
+                {
+                nodeSize: 5,
+                size: { width: 400, height: 600 },
+                source: newick,
+                styles: (
+                    metadata
+                        .split("\n")
+                        .map((line) => line.split(","))
+                        .reduce(
+                        (styles, [id, fillColour]) => { 
+                            styles[id] = { fillColour };
+                            return styles;
+                        },
+                        {}
+                    )
+                    ),
+                },
+            );
+        })
+    }
+
+</script>
+
+<div id="demo" style="border: 1px solid lightgray"></div>
